@@ -28,8 +28,6 @@ lsof.pkg-path = "lsof"
 lsof.systems = ["x86_64-linux", "aarch64-linux"]
 # Process and system monitoring (cross-platform)
 htop.pkg-path = "htop"
-# SSL/TLS tools (cross-platform)
-openssl.pkg-path = "openssl"
 
 
 ## Environment Variables ---------------------------------------------
