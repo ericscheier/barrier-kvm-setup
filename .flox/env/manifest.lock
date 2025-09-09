@@ -1,0 +1,616 @@
+{
+  "lockfile-version": 1,
+  "manifest": {
+    "version": 1,
+    "install": {
+      "htop": {
+        "pkg-path": "htop"
+      },
+      "lsof": {
+        "pkg-path": "lsof",
+        "systems": [
+          "x86_64-linux",
+          "aarch64-linux"
+        ]
+      },
+      "netcat": {
+        "pkg-path": "netcat",
+        "systems": [
+          "x86_64-linux",
+          "aarch64-linux"
+        ]
+      },
+      "nmap": {
+        "pkg-path": "nmap",
+        "systems": [
+          "x86_64-linux",
+          "aarch64-linux"
+        ]
+      },
+      "openssl": {
+        "pkg-path": "openssl"
+      },
+      "strace": {
+        "pkg-path": "strace",
+        "systems": [
+          "x86_64-linux",
+          "aarch64-linux"
+        ]
+      },
+      "tcpdump": {
+        "pkg-path": "tcpdump",
+        "systems": [
+          "x86_64-linux",
+          "aarch64-linux"
+        ]
+      }
+    },
+    "hook": {
+      "on-activate": "  # Barrier project initialization\n  echo \"🚀 Activating Barrier environment...\"\n  \n  # Ensure log directory exists\n  mkdir -p \"$FLOX_ENV_PROJECT/logs\"\n  \n  # Set up proper DISPLAY if not set\n  if [ -z \"${DISPLAY:-}\" ]; then\n    export DISPLAY=\":0\"\n    echo \"📺 Set DISPLAY to :0\"\n  fi\n  \n  # Check if barrier is installed\n  if ! command -v barrierc >/dev/null 2>&1; then\n    echo \"⚠️  Barrier not found. Run: ./scripts/install.sh\"\n  else\n    echo \"✅ Barrier client ready: $(barrierc --version 2>&1 | head -1)\"\n  fi\n  \n  echo \"📁 Project directory: $FLOX_ENV_PROJECT\"\n  echo \"🔧 Available scripts:\"\n  echo \"   ./scripts/install.sh      - Install dependencies\"\n  echo \"   ./scripts/setup-client.sh - Configure client\"  \n  echo \"   ./scripts/start-client.sh - Start client\"\n  echo \"   ./scripts/debug-barrier.sh - Debug issues\"\n"
+    },
+    "profile": {},
+    "options": {}
+  },
+  "packages": [
+    {
+      "attr_path": "htop",
+      "broken": false,
+      "derivation": "/nix/store/3qvm08c8qm6z8q3wg0kiv4fk64zjx9gf-htop-3.4.1.drv",
+      "description": "Interactive process viewer",
+      "install_id": "htop",
+      "license": "GPL-2.0-only",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "name": "htop-3.4.1",
+      "pname": "htop",
+      "rev": "8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "rev_count": 856926,
+      "rev_date": "2025-09-05T10:37:24Z",
+      "scrape_date": "2025-09-08T03:40:55.584506Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.4.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/x9qpra3y5p12va6g8dhh5f2zmrix10i1-htop-3.4.1"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "htop",
+      "broken": false,
+      "derivation": "/nix/store/2j92by7bgy1r75ii3c0j26qnl2hmyzvw-htop-3.4.1.drv",
+      "description": "Interactive process viewer",
+      "install_id": "htop",
+      "license": "GPL-2.0-only",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "name": "htop-3.4.1",
+      "pname": "htop",
+      "rev": "8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "rev_count": 856926,
+      "rev_date": "2025-09-05T10:37:24Z",
+      "scrape_date": "2025-09-08T03:52:40.960204Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.4.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/wjg1s74486w8ssayq445s1zaphyk3pzg-htop-3.4.1"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "htop",
+      "broken": false,
+      "derivation": "/nix/store/qxn9gld8k8x135dbv8azwpmfygmzv7da-htop-3.4.1.drv",
+      "description": "Interactive process viewer",
+      "install_id": "htop",
+      "license": "GPL-2.0-only",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "name": "htop-3.4.1",
+      "pname": "htop",
+      "rev": "8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "rev_count": 856926,
+      "rev_date": "2025-09-05T10:37:24Z",
+      "scrape_date": "2025-09-08T04:22:17.005416Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.4.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/ihv3avpal56ippj1pj9hqfp95x2yq9v3-htop-3.4.1"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "htop",
+      "broken": false,
+      "derivation": "/nix/store/n4rchb3g4f1ry8kk62jd7hrhawi0nn0j-htop-3.4.1.drv",
+      "description": "Interactive process viewer",
+      "install_id": "htop",
+      "license": "GPL-2.0-only",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "name": "htop-3.4.1",
+      "pname": "htop",
+      "rev": "8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "rev_count": 856926,
+      "rev_date": "2025-09-05T10:37:24Z",
+      "scrape_date": "2025-09-08T04:54:49.414488Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.4.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/z9w45ddl6mk4bhkpdphcl4rm0jpapqam-htop-3.4.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "lsof",
+      "broken": false,
+      "derivation": "/nix/store/lypvglkbmyrnr99yrnw43d4q4c5af72v-lsof-4.99.5.drv",
+      "description": "Tool to list open files",
+      "install_id": "lsof",
+      "license": "Purdue BSD-Style License",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "name": "lsof-4.99.5",
+      "pname": "lsof",
+      "rev": "8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "rev_count": 856926,
+      "rev_date": "2025-09-05T10:37:24Z",
+      "scrape_date": "2025-09-08T03:52:52.424860Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.99.5",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/6gkzd0mxfnl5j6dwcvfcv101z2az1y2x-lsof-4.99.5"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "lsof",
+      "broken": false,
+      "derivation": "/nix/store/m82x6blblaxvm0carzvx8hl9ayxhrbyj-lsof-4.99.5.drv",
+      "description": "Tool to list open files",
+      "install_id": "lsof",
+      "license": "Purdue BSD-Style License",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "name": "lsof-4.99.5",
+      "pname": "lsof",
+      "rev": "8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "rev_count": 856926,
+      "rev_date": "2025-09-05T10:37:24Z",
+      "scrape_date": "2025-09-08T04:55:02.958218Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.99.5",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/bzv1s1zgm784va3qrc3smdfmi9fm9gf1-lsof-4.99.5"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "netcat",
+      "broken": false,
+      "derivation": "/nix/store/pljxnjbdv31r3j33svhl7njzdbvr22j5-libressl-4.1.0.drv",
+      "description": "Utility which reads and writes data across network connections — LibreSSL implementation",
+      "install_id": "netcat",
+      "license": "[ Public Domain, BSD-4-Clause, 0BSD, BSD-3-Clause, GPL-3.0, ISC, OpenSSL ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "name": "libressl-4.1.0",
+      "pname": "netcat",
+      "rev": "8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "rev_count": 856926,
+      "rev_date": "2025-09-05T10:37:24Z",
+      "scrape_date": "2025-09-08T03:52:57.412868Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.1.0",
+      "outputs_to_install": [
+        "bin",
+        "man"
+      ],
+      "outputs": {
+        "bin": "/nix/store/xkg7qydfnzpajhi51cr8zpalsmx51w1j-libressl-4.1.0-bin",
+        "dev": "/nix/store/4pci00a21wg7qkk07pgi1wyx6mv8w5v1-libressl-4.1.0-dev",
+        "man": "/nix/store/vmbj3ys8d0wjqzpnspmza0j3bhhdldpq-libressl-4.1.0-man",
+        "nc": "/nix/store/3kxsav3cvja09rmhaia891p1fg1qbh48-libressl-4.1.0-nc",
+        "out": "/nix/store/35xfmkl0jwkl55hil8r7zrq6fnif57xg-libressl-4.1.0"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "netcat",
+      "broken": false,
+      "derivation": "/nix/store/nqkg4q0bi1vpdpz978bkih7hhdq5bhg3-libressl-4.1.0.drv",
+      "description": "Utility which reads and writes data across network connections — LibreSSL implementation",
+      "install_id": "netcat",
+      "license": "[ Public Domain, BSD-4-Clause, 0BSD, BSD-3-Clause, GPL-3.0, ISC, OpenSSL ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "name": "libressl-4.1.0",
+      "pname": "netcat",
+      "rev": "8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "rev_count": 856926,
+      "rev_date": "2025-09-05T10:37:24Z",
+      "scrape_date": "2025-09-08T04:55:08.667883Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.1.0",
+      "outputs_to_install": [
+        "bin",
+        "man"
+      ],
+      "outputs": {
+        "bin": "/nix/store/8d9615d1fhx9nmh2nag0mcl61rm9ksn9-libressl-4.1.0-bin",
+        "dev": "/nix/store/gd3nwmwpy3wbjkv9nl5sr053cmf9lvgn-libressl-4.1.0-dev",
+        "man": "/nix/store/05355d7aqg44j69471lyx5mhjzjb6vl8-libressl-4.1.0-man",
+        "nc": "/nix/store/82wja2q1k6ljk8yl4lh8nakki784b1i1-libressl-4.1.0-nc",
+        "out": "/nix/store/dx18g0c6asd2vkfrc99s6ws2xagwijgd-libressl-4.1.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "nmap",
+      "broken": false,
+      "derivation": "/nix/store/dsa3dn415xi5fr5xgyna64g9xa2avw8a-nmap-7.98.drv",
+      "description": "Free and open source utility for network discovery and security auditing",
+      "install_id": "nmap",
+      "license": "GPL-2.0-only",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "name": "nmap-7.98",
+      "pname": "nmap",
+      "rev": "8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "rev_count": 856926,
+      "rev_date": "2025-09-05T10:37:24Z",
+      "scrape_date": "2025-09-08T03:52:58.243464Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "7.98",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/favrq9nvd6g3j32mmp01ggm1jnlvps97-nmap-7.98"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "nmap",
+      "broken": false,
+      "derivation": "/nix/store/6l2b0y6s3zafs5w9aqz7n4pw9aadwhsj-nmap-7.98.drv",
+      "description": "Free and open source utility for network discovery and security auditing",
+      "install_id": "nmap",
+      "license": "GPL-2.0-only",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "name": "nmap-7.98",
+      "pname": "nmap",
+      "rev": "8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "rev_count": 856926,
+      "rev_date": "2025-09-05T10:37:24Z",
+      "scrape_date": "2025-09-08T04:55:09.574322Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "7.98",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/8ad78i36mr9vbcrlxcihka556a3bixql-nmap-7.98"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "openssl",
+      "broken": false,
+      "derivation": "/nix/store/88qs6hh3da8hx4f4ji3gm8l88h7s01k8-openssl-3.5.1.drv",
+      "description": "Cryptographic library that implements the SSL and TLS protocols",
+      "install_id": "openssl",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "name": "openssl-3.5.1",
+      "pname": "openssl",
+      "rev": "8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "rev_count": 856926,
+      "rev_date": "2025-09-05T10:37:24Z",
+      "scrape_date": "2025-09-08T03:41:07.270987Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.5.1",
+      "outputs_to_install": [
+        "bin",
+        "man"
+      ],
+      "outputs": {
+        "bin": "/nix/store/lzw1wj2p1c7s5xx1nj5a7g99xsy9gkz2-openssl-3.5.1-bin",
+        "dev": "/nix/store/2176y0bmwhfpm01kcnm7j05gqhqial1i-openssl-3.5.1-dev",
+        "doc": "/nix/store/145jzycgl46nwlby5r7pz0db2yikmyq3-openssl-3.5.1-doc",
+        "man": "/nix/store/7rr5an71fj97abha7r66i1pc61ixb40y-openssl-3.5.1-man",
+        "out": "/nix/store/vhpaiaa94mqzivqkzjrad6af72irp89j-openssl-3.5.1"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "openssl",
+      "broken": false,
+      "derivation": "/nix/store/xqmcihglb5zqh1gvr0zvvdkv58jgx0ni-openssl-3.5.1.drv",
+      "description": "Cryptographic library that implements the SSL and TLS protocols",
+      "install_id": "openssl",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "name": "openssl-3.5.1",
+      "pname": "openssl",
+      "rev": "8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "rev_count": 856926,
+      "rev_date": "2025-09-05T10:37:24Z",
+      "scrape_date": "2025-09-08T03:53:03.332128Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.5.1",
+      "outputs_to_install": [
+        "bin",
+        "man"
+      ],
+      "outputs": {
+        "bin": "/nix/store/p3s2s5gxsbfyy7zfzjbm54ic2wk9y60x-openssl-3.5.1-bin",
+        "debug": "/nix/store/ww2zb52m67i02vj2n8jrpzs1q9qfvkdx-openssl-3.5.1-debug",
+        "dev": "/nix/store/4labhpj45hysn6mk7g8xkp3fjzhh7p8g-openssl-3.5.1-dev",
+        "doc": "/nix/store/lyx54id42c3h86jvk08k7m2jc080ik3f-openssl-3.5.1-doc",
+        "man": "/nix/store/nb41n9kij7cgz8alz3170vriv1q7k16g-openssl-3.5.1-man",
+        "out": "/nix/store/7ws9zwkni6nvik324hhq8hq5wh3waxvr-openssl-3.5.1"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "openssl",
+      "broken": false,
+      "derivation": "/nix/store/w5c8kascb55k056ai876cz6s1b15z321-openssl-3.5.1.drv",
+      "description": "Cryptographic library that implements the SSL and TLS protocols",
+      "install_id": "openssl",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "name": "openssl-3.5.1",
+      "pname": "openssl",
+      "rev": "8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "rev_count": 856926,
+      "rev_date": "2025-09-05T10:37:24Z",
+      "scrape_date": "2025-09-08T04:22:29.214259Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.5.1",
+      "outputs_to_install": [
+        "bin",
+        "man"
+      ],
+      "outputs": {
+        "bin": "/nix/store/qdnimlkwjc37pqckqnwnccxgcsh75vs0-openssl-3.5.1-bin",
+        "dev": "/nix/store/h5p5zi3mrgasl0ngwy0031qb112800yl-openssl-3.5.1-dev",
+        "doc": "/nix/store/3s5vpzj2wrf9hc83ayy41fav8mj90m4x-openssl-3.5.1-doc",
+        "man": "/nix/store/rk1dx97ksw2ch39fy93x5gx7n0mz39iv-openssl-3.5.1-man",
+        "out": "/nix/store/2cf6iaamaldqlsm60lz78zrs1lwfy0zj-openssl-3.5.1"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "openssl",
+      "broken": false,
+      "derivation": "/nix/store/8jxz8bm6ss7bgvsj4pq3ydy6xq9fdnbm-openssl-3.5.1.drv",
+      "description": "Cryptographic library that implements the SSL and TLS protocols",
+      "install_id": "openssl",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "name": "openssl-3.5.1",
+      "pname": "openssl",
+      "rev": "8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "rev_count": 856926,
+      "rev_date": "2025-09-05T10:37:24Z",
+      "scrape_date": "2025-09-08T04:55:15.076688Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.5.1",
+      "outputs_to_install": [
+        "bin",
+        "man"
+      ],
+      "outputs": {
+        "bin": "/nix/store/mi1pwxxkcplv09cbim5f80bga62xymfb-openssl-3.5.1-bin",
+        "debug": "/nix/store/3219a6qgcak8w7vr5wblda557ifbxxkl-openssl-3.5.1-debug",
+        "dev": "/nix/store/nwwdn3nq90c58lvy9x3ix6xgxp5vy4in-openssl-3.5.1-dev",
+        "doc": "/nix/store/i9s3zyvrgcgk5vxshvkc14vfab428ka7-openssl-3.5.1-doc",
+        "man": "/nix/store/g3lw60mp7lxrdrg9z8v6ka6b25wl61pp-openssl-3.5.1-man",
+        "out": "/nix/store/xzhbzgxyzw8vpkx0pxvwsh64v4536isz-openssl-3.5.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "strace",
+      "broken": false,
+      "derivation": "/nix/store/lyifhrgvp1nw6ks8nx3qdbrwphn2ixjc-strace-6.16.drv",
+      "description": "System call tracer for Linux",
+      "install_id": "strace",
+      "license": "[ LGPL-2.1-or-later, GPL-2.0-or-later ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "name": "strace-6.16",
+      "pname": "strace",
+      "rev": "8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "rev_count": 856926,
+      "rev_date": "2025-09-05T10:37:24Z",
+      "scrape_date": "2025-09-08T03:54:47.009735Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "6.16",
+      "outputs_to_install": [
+        "man",
+        "out"
+      ],
+      "outputs": {
+        "debug": "/nix/store/qh85crwcibw6266pw7a1ni10hnnajxyy-strace-6.16-debug",
+        "man": "/nix/store/n7pqvx6b9jl5nv313psax1grvyy7fq0f-strace-6.16-man",
+        "out": "/nix/store/bp675cwyrxfjncysdd8f60z31vhkhmkd-strace-6.16"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "strace",
+      "broken": false,
+      "derivation": "/nix/store/4maq1x2x1b4lhm3473n62q4cqb91pisb-strace-6.16.drv",
+      "description": "System call tracer for Linux",
+      "install_id": "strace",
+      "license": "[ LGPL-2.1-or-later, GPL-2.0-or-later ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "name": "strace-6.16",
+      "pname": "strace",
+      "rev": "8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "rev_count": 856926,
+      "rev_date": "2025-09-05T10:37:24Z",
+      "scrape_date": "2025-09-08T04:57:02.803316Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "6.16",
+      "outputs_to_install": [
+        "man",
+        "out"
+      ],
+      "outputs": {
+        "debug": "/nix/store/kjzs808mfac3wggqsds8lzswdjpygzzv-strace-6.16-debug",
+        "man": "/nix/store/w760izx2287x679f51hdwi2yyv2xj32k-strace-6.16-man",
+        "out": "/nix/store/f1rwnrzxf8h9cg13dzqh2yjw8jxh7mpb-strace-6.16"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "tcpdump",
+      "broken": false,
+      "derivation": "/nix/store/phqi38gz178fpf4jjkvsy4xxf547fc0x-tcpdump-4.99.5.drv",
+      "description": "Network sniffer",
+      "install_id": "tcpdump",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "name": "tcpdump-4.99.5",
+      "pname": "tcpdump",
+      "rev": "8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "rev_count": 856926,
+      "rev_date": "2025-09-05T10:37:24Z",
+      "scrape_date": "2025-09-08T03:54:49.010531Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.99.5",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/8cq61gndyrqlbnb806kl8qb1279nr9j2-tcpdump-4.99.5"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "tcpdump",
+      "broken": false,
+      "derivation": "/nix/store/hzvb459b7llnnipbacv950738dqzqiyy-tcpdump-4.99.5.drv",
+      "description": "Network sniffer",
+      "install_id": "tcpdump",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "name": "tcpdump-4.99.5",
+      "pname": "tcpdump",
+      "rev": "8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+      "rev_count": 856926,
+      "rev_date": "2025-09-05T10:37:24Z",
+      "scrape_date": "2025-09-08T04:57:05.278387Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.99.5",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/5czhndkg9n73wcjrb46a1dv3r50d22qq-tcpdump-4.99.5"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    }
+  ]
+}

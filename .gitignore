@@ -1,0 +1,33 @@
+# Logs
+logs/
+*.log
+
+# Flox cache
+.flox/cache/
+.flox/run/
+
+# Barrier runtime files
+.barrier/
+barrier.conf
+
+# SSH keys (if any)
+*.pem
+*.key
+id_*
+
+# Temporary files
+.tmp/
+temp/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Local configuration overrides  
+local.conf
+*.local
