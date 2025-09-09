@@ -6,7 +6,7 @@ Wants=graphical-session.target
 [Service]
 Type=simple
 Environment=DISPLAY=:0
-ExecStart=/usr/bin/barriers -f --no-tray --debug INFO --name %H --config %h/.barrier/barrier.conf
+ExecStart=/usr/bin/barriers -f --no-tray --debug INFO --disable-crypto --name %H --config %h/.barrier/barrier.conf
 Restart=always
 RestartSec=5
 
