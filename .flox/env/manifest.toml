@@ -35,7 +35,19 @@ htop.pkg-path = "htop"
 ##      as well as [hook], [profile] scripts and [services] below.
 ## -------------------------------------------------------------------
 [vars]
-# INTRO_MESSAGE = "It's gettin' Flox in here"
+# Polyglot-workbench integration variables
+BARRIER_PROJECT_DIR = "$FLOX_ENV_PROJECT"
+BARRIER_LOG_DIR = "$FLOX_ENV_PROJECT/logs"
+BARRIER_PID_DIR = "$FLOX_ENV_PROJECT/.pids"
+
+# Default Barrier configuration
+BARRIER_SERVER_IP = "192.168.1.206"
+BARRIER_PORT = "24800"
+BARRIER_LOG_LEVEL = "INFO"
+
+# Polyglot-workbench activation support
+POLYGLOT_PROJECT_TYPE = "barrier-kvm"
+POLYGLOT_ACTIVATION_READY = "true"
 
 
 ## Activation Hook ---------------------------------------------------
@@ -46,8 +58,9 @@ on-activate = '''
   # Barrier project initialization
   echo "🚀 Activating Barrier environment..."
   
-  # Ensure log directory exists
+  # Ensure required directories exist
   mkdir -p "$FLOX_ENV_PROJECT/logs"
+  mkdir -p "$FLOX_ENV_PROJECT/.pids"
   
   # Set up proper DISPLAY if not set
   if [ -z "${DISPLAY:-}" ]; then
@@ -57,17 +70,35 @@ on-activate = '''
   
   # Check if barrier is installed
   if ! command -v barrierc >/dev/null 2>&1; then
-    echo "⚠️  Barrier not found. Run: ./scripts/install.sh"
+    echo "⚠️  Barrier not found. Install with: sudo apt-get install barrier"
   else
-    echo "✅ Barrier client ready: $(barrierc --version 2>&1 | head -1)"
+    echo "✅ Barrier ready: $(barrierc --version 2>&1 | head -1)"
+  fi
+  
+  # Polyglot-workbench integration check
+  if [ "${POLYGLOT_ACTIVATION:-}" = "true" ]; then
+    echo "🔗 Polyglot-workbench activation detected"
+    
+    # Auto-start services if configured
+    if [ "${ACTIVATE_START_SERVICES:-false}" = "true" ]; then
+      echo "🚀 Auto-starting Barrier services..."
+      "$FLOX_ENV_PROJECT/scripts/daemon-manager.sh" polyglot-start
+      
+      # Verify services started
+      if [ "${ACTIVATE_VERIFY_SERVICES:-true}" = "true" ]; then
+        sleep 3
+        "$FLOX_ENV_PROJECT/scripts/daemon-manager.sh" polyglot-verify
+      fi
+    fi
   fi
   
   echo "📁 Project directory: $FLOX_ENV_PROJECT"
-  echo "🔧 Available scripts:"
-  echo "   ./scripts/install.sh      - Install dependencies"
-  echo "   ./scripts/setup-client.sh - Configure client"  
-  echo "   ./scripts/start-client.sh - Start client"
-  echo "   ./scripts/debug-barrier.sh - Debug issues"
+  echo "🔧 Key commands:"
+  echo "   ./setup.sh [server|client]           - Initial setup"
+  echo "   ./scripts/verify-installation.sh     - Health checks"
+  echo "   ./scripts/daemon-manager.sh start    - Start daemon services"
+  echo "   ./scripts/discover-server.sh         - Find servers on network"
+  echo "   ./scripts/cleanup.sh                 - Clean/reset installation"
 '''
 
 

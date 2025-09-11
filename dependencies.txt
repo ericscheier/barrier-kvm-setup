@@ -1,0 +1,55 @@
+# Barrier KVM System Dependencies
+# Required system packages for Barrier KVM setup
+
+# Core Barrier Package
+barrier
+
+# Network Tools
+netcat-openbsd
+nmap
+
+# System Debugging and Monitoring
+tcpdump
+strace
+lsof
+htop
+
+# Display Server Tools
+x11-utils
+xorg-utils
+# Alternative for Wayland systems:
+# wayland-utils
+
+# SSH and Remote Access
+openssh-client
+
+# Additional Utilities
+curl
+wget
+git
+
+# Optional but Recommended
+imagemagick         # For creating identification wallpapers
+conky              # For desktop widgets
+python3-gi         # For system tray indicators
+gir1.2-appindicator3-0.1  # For system tray support
+
+# Development Tools (optional)
+vim
+nano
+less
+
+# System Service Tools
+systemd            # Usually pre-installed
+ufw                # Firewall (Ubuntu/Debian)
+# Alternative firewall options:
+# firewalld         # For RHEL/CentOS/Fedora
+# iptables-persistent  # For advanced iptables setup
+
+# Audio Support (if needed for audio sharing)
+# pulseaudio
+# alsa-utils
+
+# Container Support (future)
+# docker
+# podman
