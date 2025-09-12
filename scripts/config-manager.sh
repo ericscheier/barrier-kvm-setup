@@ -21,6 +21,7 @@ NC='\033[0m'
 # Configuration profiles
 declare -A PROFILES=(
     ["default"]="server/barrier.conf|Default development configuration"
+    ["3machines"]="configs/barrier-3machines.conf|Three-machine setup: orville-muir-wright"
     ["gaming"]="configs/barrier-gaming.conf|Gaming-optimized with fast switching"
     ["development"]="configs/barrier-development.conf|Development workflow with productivity hotkeys"
     ["presentation"]="configs/barrier-presentation.conf|Presentation mode with conservative switching"

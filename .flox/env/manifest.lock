@@ -42,8 +42,18 @@
         ]
       }
     },
+    "vars": {
+      "BARRIER_LOG_DIR": "$FLOX_ENV_PROJECT/logs",
+      "BARRIER_LOG_LEVEL": "INFO",
+      "BARRIER_PID_DIR": "$FLOX_ENV_PROJECT/.pids",
+      "BARRIER_PORT": "24800",
+      "BARRIER_PROJECT_DIR": "$FLOX_ENV_PROJECT",
+      "BARRIER_SERVER_IP": "192.168.1.206",
+      "POLYGLOT_ACTIVATION_READY": "true",
+      "POLYGLOT_PROJECT_TYPE": "barrier-kvm"
+    },
     "hook": {
-      "on-activate": "  # Barrier project initialization\n  echo \"🚀 Activating Barrier environment...\"\n  \n  # Ensure log directory exists\n  mkdir -p \"$FLOX_ENV_PROJECT/logs\"\n  \n  # Set up proper DISPLAY if not set\n  if [ -z \"${DISPLAY:-}\" ]; then\n    export DISPLAY=\":0\"\n    echo \"📺 Set DISPLAY to :0\"\n  fi\n  \n  # Check if barrier is installed\n  if ! command -v barrierc >/dev/null 2>&1; then\n    echo \"⚠️  Barrier not found. Run: ./scripts/install.sh\"\n  else\n    echo \"✅ Barrier client ready: $(barrierc --version 2>&1 | head -1)\"\n  fi\n  \n  echo \"📁 Project directory: $FLOX_ENV_PROJECT\"\n  echo \"🔧 Available scripts:\"\n  echo \"   ./scripts/install.sh      - Install dependencies\"\n  echo \"   ./scripts/setup-client.sh - Configure client\"  \n  echo \"   ./scripts/start-client.sh - Start client\"\n  echo \"   ./scripts/debug-barrier.sh - Debug issues\"\n"
+      "on-activate": "  # Barrier project initialization\n  echo \"🚀 Activating Barrier environment...\"\n  \n  # Ensure required directories exist\n  mkdir -p \"$FLOX_ENV_PROJECT/logs\"\n  mkdir -p \"$FLOX_ENV_PROJECT/.pids\"\n  \n  # Set up proper DISPLAY if not set\n  if [ -z \"${DISPLAY:-}\" ]; then\n    export DISPLAY=\":0\"\n    echo \"📺 Set DISPLAY to :0\"\n  fi\n  \n  # Check if barrier is installed\n  if ! command -v barrierc >/dev/null 2>&1; then\n    echo \"⚠️  Barrier not found. Install with: sudo apt-get install barrier\"\n  else\n    echo \"✅ Barrier ready: $(barrierc --version 2>&1 | head -1)\"\n  fi\n  \n  # Polyglot-workbench integration check\n  if [ \"${POLYGLOT_ACTIVATION:-}\" = \"true\" ]; then\n    echo \"🔗 Polyglot-workbench activation detected\"\n    \n    # Auto-start services if configured\n    if [ \"${ACTIVATE_START_SERVICES:-false}\" = \"true\" ]; then\n      echo \"🚀 Auto-starting Barrier services...\"\n      \"$FLOX_ENV_PROJECT/scripts/daemon-manager.sh\" polyglot-start\n      \n      # Verify services started\n      if [ \"${ACTIVATE_VERIFY_SERVICES:-true}\" = \"true\" ]; then\n        sleep 3\n        \"$FLOX_ENV_PROJECT/scripts/daemon-manager.sh\" polyglot-verify\n      fi\n    fi\n  fi\n  \n  echo \"📁 Project directory: $FLOX_ENV_PROJECT\"\n  echo \"🔧 Key commands:\"\n  echo \"   ./setup.sh [server|client]           - Initial setup\"\n  echo \"   ./scripts/verify-installation.sh     - Health checks\"\n  echo \"   ./scripts/daemon-manager.sh start    - Start daemon services\"\n  echo \"   ./scripts/discover-server.sh         - Find servers on network\"\n  echo \"   ./scripts/cleanup.sh                 - Clean/reset installation\"\n"
     },
     "profile": {},
     "options": {}
